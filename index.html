@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background: #121212;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .player-card {
+            background: #1e1e1e;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .album-art {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff00cc, #3333ff);
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        button {
+            background: #242424;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:active {
+            transform: scale(0.9);
+            background: #333;
+        }
+        .play-btn {
+            background: #0088cc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-card">
+        <div class="album-art">🎵</div>
+        <h2 id="song-title">Song Title</h2>
+        <p id="artist-name">Artist Name</p>
+
+        <div class="controls">
+            <button onclick="sendCommand('/prev')">⏮</button>
+            <button class="play-btn" onclick="sendCommand('/pause')">⏸ / ▶</button>
+            <button onclick="sendCommand('/skip')">⏭</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Telegram WebApp
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Make the app full screen
+
+        // Function to send command back to the bot
+        function sendCommand(cmd) {
+            // This sends the command text as a message back to the bot
+            tg.sendData(cmd); 
+            
+            // Optional: Haptic feedback (vibration) for a premium feel
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred('medium');
+            }
+        }
+
+        // Set the color of the header to match the theme
+        tg.setHeaderColor('#121212');
+    </script>
+</body>
+</html>
