@@ -9,7 +9,7 @@ API_ID = 24344412  # Get from my.telegram.org
 API_HASH = "55bc889a002726d80e5c2061c2fd6303"
 BOT_TOKEN = "8098076126:AAF-RwYSqM7QpyKdFbou7pyxxobMqGIJhDk"
 # The URL where you hosted your index.html on Vercel
-WEBAPP_URL = "https://your-vercel-link.vercel.app" 
+WEBAPP_URL = "https://music-eta-pink.vercel.app/" 
 
 # --- INITIALIZATION ---
 # We use one client for the bot and one for the user account (required for voice chats)
